@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <!-- <button class="menu-button" (click)="onOpenSidenav()"><mat-icon>menu</mat-icon></button> -->
+  <mat-icon fxHide.gt-xs class="menu-icon" (click)="onOpenSidenav()">menu</mat-icon>
+  <div class="home">
+    <a 
+      [routerLinkActive]="['active-link']"
+      [routerLinkActiveOptions]="{exact: true}"
+      routerLink="/home">
+      HOME
+    </a>
+  </div>
+  <div class="spacer" fxFlex></div>
+  <span class="user-email" *ngIf="(userEmail$ | async)">{{userEmail$ | async}}</span>
+  <div class="list-container" fxHide.xs>
+    <ul fxLayout fxLayoutGap="15px">
+      <li *ngIf="!(userEmail$ | async)">NOT LOGGED IN</li>
+      <li *ngIf="(userEmail$ | async)"><a routerLinkActive="active-link" routerLink="/edit-menu">EDIT MENU</a></li>
+      <li *ngIf="!(userEmail$ | async)"><a routerLinkActive="active-link" routerLink="/signup">SIGN UP</a></li>
+      <li *ngIf="!(userEmail$ | async)"><a routerLinkActive="active-link" routerLink="/login">LOG IN</a></li>
+      <li *ngIf="userEmail$ | async"><a routerLinkActive="active-link" (click)="onLogOut()">LOG OUT</a></li>
+    </ul>
+  </div>
+</mat-toolbar>

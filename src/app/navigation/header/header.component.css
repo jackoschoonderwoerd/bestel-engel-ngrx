@@ -1,0 +1,23 @@
+a {
+  color: lightblue
+}
+
+li {
+  cursor: pointer;
+}
+
+.active-link {
+  color: white;
+  border: 1px solid white;
+  padding: 3px 6px;
+}
+
+.menu-icon {
+  /* background-color: transparent; */
+  color: white;
+  margin-right: 10px;
+}
+
+.user-email {
+  color: lightgreen;
+}

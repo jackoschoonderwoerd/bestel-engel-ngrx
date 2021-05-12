@@ -1,0 +1,14 @@
+
+
+<mat-sidenav-container>
+  <mat-sidenav role="navigation" [opened]="isOpened" (closed)="closed()">
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header></app-header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

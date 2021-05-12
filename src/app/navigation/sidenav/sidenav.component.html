@@ -1,0 +1,6 @@
+<mat-nav-list>
+  <a *ngIf="!(isAuth$ | async)" mat-list-item routerLink="/signup" (click)="onCloseSidenav()">SIGN UP</a>
+  <a *ngIf="!(isAuth$ | async)" mat-list-item routerLink="/login" (click)="onCloseSidenav()">LOG IN</a>
+  <a *ngIf="(isAuth$ | async)" mat-list-item (click)="onLogOut()" (click)="onCloseSidenav()">LOG OUT</a>
+  <a *ngIf="(isAuth$ | async)"  mat-list-item routerLink="/edit-menu" (click)="onCloseSidenav()">EDIT MENU</a>
+</mat-nav-list>

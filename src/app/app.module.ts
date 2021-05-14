@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 
 import { AuthGuard } from './auth/auth-guard';
+import { AuthAdminGuard } from './auth/auth-admin.guard';
 // import { TrainingModule } from './training/training.module';
 
 
@@ -46,7 +47,7 @@ import { AuthGuard } from './auth/auth-guard';
     
     
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, AuthAdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

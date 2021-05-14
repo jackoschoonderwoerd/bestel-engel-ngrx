@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthAdminGuard } from '../auth/auth-admin.guard';
 import { AuthGuard } from '../auth/auth-guard';
-import { EditMenuComponent } from './edit-menu/edit-menu.component';
+import { ProgramComponent } from './program/program.component';
+
 
 
 const routes: Routes = [
-  { path: '', component: EditMenuComponent, canActivate: [AuthGuard]}
+  
+  { path: 'program', component: ProgramComponent}
+  
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class BusinessRoutingModule { }
+export class UserRoutingModule { }

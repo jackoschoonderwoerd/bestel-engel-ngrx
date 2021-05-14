@@ -14,10 +14,12 @@
   <div class="list-container" fxHide.xs>
     <ul fxLayout fxLayoutGap="15px">
       <li *ngIf="!(userEmail$ | async)">NOT LOGGED IN</li>
-      <li *ngIf="(userEmail$ | async)"><a routerLinkActive="active-link" routerLink="/edit-menu">EDIT MENU</a></li>
+      <!-- <li *ngIf="(userEmail$ | async) && (isAdmin$ | async)"><a routerLinkActive="active-link" routerLink="/edit-menu">EDIT MENU</a></li> -->
+      <li *ngIf="(userEmail$ | async) && (isAdmin$ | async)"><a routerLinkActive="active-link" routerLink="/admin">ADMIN</a></li>
       <li *ngIf="!(userEmail$ | async)"><a routerLinkActive="active-link" routerLink="/signup">SIGN UP</a></li>
       <li *ngIf="!(userEmail$ | async)"><a routerLinkActive="active-link" routerLink="/login">LOG IN</a></li>
-      <li *ngIf="userEmail$ | async"><a routerLinkActive="active-link" (click)="onLogOut()">LOG OUT</a></li>
+      <li *ngIf="(userEmail$ | async)"><a routerLinkActive="active-link" routerLink="/user/program">PROGRAM</a></li>
+      <li *ngIf="(userEmail$ | async)"><a routerLinkActive="active-link" (click)="onLogOut()">LOG OUT</a></li>
     </ul>
   </div>
 </mat-toolbar>

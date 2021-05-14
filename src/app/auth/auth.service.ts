@@ -58,19 +58,32 @@ export class AuthService {
     console.log(user);
     this.angularFireAuth.signInWithEmailAndPassword(user.email, user.password)
     .then(result => {
-      this.router.navigate(['/home'])
-      this.store.dispatch(new UI.StopLoading);
-      console.log(result);
-      this.store.dispatch(new AUTH.SetAuthenticated(result.user.email));
+      if(result.user.email === 'jackoboes@gmail.com') {
+        console.log('is admin')
+        this.router.navigate(['/admin'])
+        this.store.dispatch(new AUTH.SetIsAdmin)
+        this.store.dispatch(new UI.StopLoading);
+        this.store.dispatch(new AUTH.SetAuthenticated(result.user.email));
+      } else {
+        console.log('is not admin')
+        this.store.dispatch(new AUTH.SetIsNotAdmin)
+        this.store.dispatch(new UI.StopLoading);
+        this.router.navigate(['/home'])
+        console.log(result);
+        this.store.dispatch(new AUTH.SetAuthenticated(result.user.email));
+      }
     })
     .catch(err => {
       this.uiService.showSnackbar(err.message, 'CLOSE', 5000);
       this.store.dispatch(new UI.StopLoading);
+      this.store.dispatch(new AUTH.SetUnauthenticated);
       console.log(err)
     });
   }
   logOut() {
     this.angularFireAuth.signOut();
     this.store.dispatch(new AUTH.SetUnauthenticated());
+    this.store.dispatch(new AUTH.SetIsNotAdmin());
+    this.router.navigate(['login'])
   }
 }

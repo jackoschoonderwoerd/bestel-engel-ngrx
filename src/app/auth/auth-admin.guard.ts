@@ -9,17 +9,17 @@ import { take } from 'rxjs/operators';
 
 @Injectable()
 
-export class AuthGuard implements CanLoad, CanActivate {
+export class AuthAdminGuard implements CanLoad, CanActivate {
   isAuth$: Observable<boolean>
 
   constructor(private store: Store<fromRoot.GlobalState>) {}
 
   canLoad(route: Route) {
-    return this.store.select(fromRoot.getIsAuth).pipe(take(1));
+    return this.store.select(fromRoot.getIsAdmin).pipe(take(1));
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    console.log('authGuard')
-    return this.store.select(fromRoot.getIsAuth).pipe(take(1));
+    console.log('authAdminGuard');
+    return this.store.select(fromRoot.getIsAdmin).pipe(take(1));
   }
 }

@@ -19,3 +19,4 @@ export const getIsLoading = createSelector(getUiState, fromUI.getIsLoading);
 export const getAuthState = createFeatureSelector<fromAuth.AuthState>('auth');
 export const getIsAuth = createSelector(getAuthState, fromAuth.getIsAuth)
 export const getUserEmail = createSelector(getAuthState, fromAuth.getUserEmail);
+export const getIsAdmin = createSelector(getAuthState, fromAuth.getIsAdmin);

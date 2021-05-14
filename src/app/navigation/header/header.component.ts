@@ -13,6 +13,7 @@ import * as UI from './../../shared/ui.actions';
 export class HeaderComponent implements OnInit {
 
   userEmail$: Observable<string>
+  isAdmin$: Observable<boolean>
 
   constructor(
     private store: Store<fromRoot.GlobalState>,
@@ -20,7 +21,8 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userEmail$ = this.store.select(fromRoot.getUserEmail)
+    this.userEmail$ = this.store.select(fromRoot.getUserEmail);
+    this.isAdmin$ = this.store.select(fromRoot.getIsAdmin);
   }
   onOpenSidenav() {
     this.store.dispatch(new UI.OpenSidenav);
